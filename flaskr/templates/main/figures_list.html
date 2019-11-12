@@ -5,39 +5,62 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 
+<body>
 
 <div class="row">
   <div class="col-4">
     <div class="list-group list-group-horizontal" id="list-tab" role="tablist">
       <a class="list-group-item list-group-item-action active" id="list-jumps-list" data-toggle="list" href="#list-jumps" role="tab" aria-controls="jumps">Jumps</a>
       <a class="list-group-item list-group-item-action" id="list-spins-list" data-toggle="list" href="#list-spins" role="tab" aria-controls="spins">Spins</a>
-      <a class="list-group-item list-group-item-action" id="list-others-list" data-toggle="list" href="#list-others" role="tab" aria-controls="others">Others</a>
+      <a class="list-group-item list-group-item-action" id="list-other-figures-list" data-toggle="list" href="#list-other-figures" role="tab" aria-controls="other-figures">Other Figures</a>
+      <a class="list-group-item list-group-item-action" id="list-off-ice-workout-list" data-toggle="list" href="#list-off-ice-workout" role="tab" aria-controls="off-ice-workout">Off-Ice Workouts</a>
     </div>
   </div>
-  <div class="col-8">
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-jumps" role="tabpanel" aria-labelledby="list-jumps-list">
-      <h3> Saut de valse
-          <button type="button" class="btn btn-outline-primary">Add to my figures</button>
-        </h3>
-          <iframe width="672" height="378" src="https://www.youtube.com/embed/eVP8r-ubbp8?list=PLHPS0ZfuDSceuVGrL4RV9KlXAZF7QMl9W" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="672" height="378" src="https://www.youtube.com/embed/58qeNLvppQM?list=PLHPS0ZfuDSceuVGrL4RV9KlXAZF7QMl9W" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <h3> L'Axel
-          <button type="button" class="btn btn-outline-primary">Add to my figures</button>
-        </h3>
-          <iframe width="672" height="378" src="https://www.youtube.com/embed/2JwhzzdzaHc?list=PLHPS0ZfuDSceuVGrL4RV9KlXAZF7QMl9W" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="tab-pane fade" id="list-spins" role="tabpanel" aria-labelledby="list-spins-list">
-          <iframe width="672" height="378" src="https://www.youtube.com/embed/LD3RP1sOZs8?list=PLHPS0ZfuDSceuVGrL4RV9KlXAZF7QMl9W" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <h3> Pirouette Debout
-          <button type="button" class="btn btn-outline-primary">Add to my figures</button>
-            </h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/funHrWJbOts" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="tab-pane fade" id="list-others" role="tabpanel" aria-labelledby="list-messages-others"></div>
+
+<div class="col-8">
+<div class="tab-content" id="nav-tabContent">
+
+    <div class="tab-pane fade show active" id="list-jumps" role="tabpanel" aria-labelledby="list-jumps-list">
+        {% for figure in figures %}
+            {% if figure.category == 'Jump' %}
+                {% import 'video_template.html' as video_temp %}
+                <h3> {{ video_temp.video(figure_title = figure.title, video_link = figure.videolink)}} </h3>
+            {% endif %}
+        {% endfor %}
     </div>
-  </div>
+
+    <div class="tab-pane fade" id="list-spins" role="tabpanel" aria-labelledby="list-spins-list">
+        {% for figure in figures %}
+            {% if figure.category == 'Spin' %}
+                {% import 'video_template.html' as video_temp %}
+                <h3> {{ video_temp.video(figure_title = figure.title, video_link = figure.videolink)}} </h3>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="tab-pane fade" id="list-other-figures" role="tabpanel" aria-labelledby="list-other-figures-list">
+        {% for figure in figures %}
+            {% if figure.category == 'Other Figures' %}
+                {% import 'video_template.html' as video_temp %}
+                <h3> {{ video_temp.video(figure_title = figure.title, video_link = figure.videolink)}} </h3>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="tab-pane fade" id="list-off-ice-workout" role="tabpanel" aria-labelledby="list-off-ice-workout-list">
+        {% for figure in figures %}
+            {% if figure.category == 'Workout' %}
+                {% import 'video_template.html' as video_temp %}
+                <h3> {{ video_temp.video(figure_title = figure.title, video_link = figure.videolink)}} </h3>
+            {% endif %}
+        {% endfor %}
+        </div>
+
+
 </div>
+</div>
+</div>
+</body>
 </html>
 
 {% endblock %}
