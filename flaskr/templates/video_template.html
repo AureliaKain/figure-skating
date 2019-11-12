@@ -1,0 +1,19 @@
+<html>
+
+{% macro video(figure_title, video_link, width, height, frameborder, allow, allowfullscreen) -%}
+
+
+<h3>  {{figure_title}}
+                <button type="button" class="btn btn-outline-primary">Add to my figures</button>
+                </h3>
+                <iframe src="{{video_link}}"
+                  width="672"
+                  height="378"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+
+          </iframe>
+{%- endmacro %}
+</html>
+

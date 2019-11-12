@@ -38,7 +38,7 @@
                             <a href="{{ url_for('main.profile') }}" class="navbar-item">
                                 Profile
                             </a>
-                            <a href="{{ url_for('main.figures_list') }}" class="navbar-item">
+                            <a href="{{ url_for('main.figures_list_auto') }}" class="navbar-item">
                                 Figures
                             </a>
                             <a href="{{ url_for('auth.login') }}" class="navbar-item">
@@ -64,6 +64,7 @@
                 {% endfor %}
                {% endblock %}
             </div>
+        </div>
         </div>
     </section>
 </body>
